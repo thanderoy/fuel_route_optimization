@@ -1,0 +1,43 @@
+[project]
+name = "fuel-route-api"
+version = "1.0.0"
+description = "Django REST API for fuel-efficient truck route planning across the USA"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=6.0,<7.0",
+    "djangorestframework>=3.16,<4.0",
+    "dj-database-url>=3.1,<4.0",
+    "drf-spectacular>=0.29,<1.0",
+    "requests>=2.32,<3.0",
+    "scipy>=1.17,<2.0",
+    "polyline>=2.0,<3.0",
+    "numpy>=2.4,<3.0",
+    "geopy>=2.4,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.9",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "B",    # flake8-bugbear
+    "UP",   # pyupgrade
+    "DJ",   # flake8-django
+]
+ignore = [
+    "E501",  # line-too-long (handled by formatter)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["routes", "fuel_route_api"]
